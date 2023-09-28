@@ -1,0 +1,585 @@
+﻿@model PhoenixProject.Models.LogInModel
+
+@*@using CaptchaMvc.HtmlHelpers*@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+   
+    <style>
+
+                body {
+                    font-family: Arial, Helvetica, sans-serif;
+                    background-image: url('../../Content/Image/body1 tag.png');
+                    background-repeat: no-repeat;
+                    background-color: antiquewhite;
+                    background-position: center;
+                    background-size: cover;
+                }
+
+                Center the image and position the close button
+                .imgcontainer {
+                    text-align: center;
+                    margin: 24px 0 12px 0;
+                    position: relative;
+                }
+
+                img.avatar {
+                    width: 40%;
+                    border-radius: 50%;
+                    margin-left: 27%;
+                }
+
+                /*   .container {
+                         padding: 20px;
+                        padding-left: 50px
+                    }
+        */
+
+                /* The Modal (background) */
+                .modal {
+                    display: none; /* Hidden by default */
+                    position: fixed; /* Stay in place */
+                    z-index: 1; /* Sit on top */
+                    left: 0;
+                    top: 0;
+                    width: 100%; /* Full width */
+                    height: 100%; /* Full height */
+                    overflow: auto; /* Enable scroll if needed */
+                    background-color: rgb(0,0,0); /* Fallback color */
+                    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                    padding-top: 60px;
+                }
+
+                /* Modal Content/Box */
+                .modal-content {
+                    background-color: rgb(135,206,250);
+                    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+                    border: 1px solid #888;
+                    width: 40%; /* Could be more or less, depending on screen size */
+                    height: 100%;
+                    /*opacity: 0.7 ;*/
+                    color: white;
+                    background-color: rgba(0,255,0,0.3);
+                    /*background-color: #f2cfcf;*/
+                }
+
+                /* The Close Button (x) */
+                .close {
+                    position: absolute;
+                    right: 25px;
+                    top: 0;
+                    color: red;
+                    font-size: 35px;
+                    font-weight: bold;
+                }
+
+                    .close:hover,
+                    .close:focus {
+                        color: red;
+                        cursor: pointer;
+                    }
+
+                #type {
+                    margin-top: 3%;
+                    margin-left: 10%;
+                    display: none;
+                    background-color: #f2cfcf;
+                }
+
+                #admin, #user, #employee {
+                    padding-top: 10px;
+                    color: white;
+                    font-weight: bold;
+                    /* background-color:rgb(7 6 6 / 0.86)*/
+                }
+
+                #span {
+                    background-color: rgb(105,105,105);
+                    color: black;
+                    font-weight: bold;
+                    min-width: 100%;
+                    margin: 5px auto;
+                    background-color: rgb(135,206,250);
+                    border-radius: 20px 20px 20px 20px;
+                    height: 50px
+                }
+
+                /* Add Zoom Animation */
+                .animate {
+                    -webkit-animation: animatezoom 0.6s;
+                    animation: animatezoom 0.6s
+                }
+
+                @@-webkit-keyframes animatezoom {
+                    from {
+                        -webkit-transform: scale(0)
+                    }
+
+                    to {
+                        -webkit-transform: scale(1)
+                    }
+                }
+
+                @@keyframes animatezoom {
+                    from {
+                        transform: scale(0)
+                    }
+
+                    to {
+                        transform: scale(1)
+                    }
+                }
+
+                /* Change styles for span and cancel button on extra small screens */
+
+                @@media screen and (max-width: 300px) {
+                    span.psw {
+                        display: block;
+                        float: none;
+                    }
+                }
+
+                #btn {
+                    margin-left: 180px;
+                    margin-top: 40px;
+                    width: 15%;
+                }
+
+                #btn1 {
+                    margin-left: 10px;
+                    font-weight: bold;
+                    color: black;
+                    background-color: rgb(135,206,250);
+                    border-radius: 10px 10px 10px 10px;
+                    width: 40%;
+                }
+
+                #btn2 {
+                    margin-left: 20px;
+                    font-weight: bold;
+                    color: black;
+                    background-color: rgb(135,206,250);
+                    border-radius: 10px 10px 10px 10px;
+                    width: 40%;
+                }
+
+                #Remember {
+                    float: left;
+                    color: white;
+                    margin-left: 100px;
+                    font-weight: bold;
+                }
+
+                div a {
+                    color: black;
+                }
+
+                .text-danger {
+                    background-color: white;
+                    margin-top: 20px;
+                    margin-left: 40px;
+                    width: 50%;
+                }
+
+              
+    </style>
+
+
+</head>
+<body>
+
+
+    @*<><><><><><>><><><><><><><>  For Session Timeout Message <><><><><><><><><><><><><><>*@
+
+    @*@Html.Raw(TempData["msg"])*@
+
+
+
+    @*=============================== Button ( Login & SignUp ) ==================================*@
+
+    <div id="btn">
+        <button id="btn1" onclick="document.getElementById('type').style.display='block'">Login</button>
+        <button id="btn2" onclick="document.getElementById('signup').style.display='block'">Signup</button>
+    </div><br /><br />
+
+
+
+    @*@Html.Captcha(4)*@
+
+    @*<><><><><><>><><><><><><><>(ERROR Message)  Forgot Password Email Invalid Message <><><><><><><><><><><><><><>*@
+
+    <p style="color:white"> @ViewBag.SignUp_Procedure</p>
+
+    <span style="color:red;background-color:white;font-weight:bold"> @ViewBag.Captcha</span>
+
+    @Html.Raw(Session["Wrong_Email"])
+
+
+    @*/*/*/*/*//*/*/*/*/*/*//*//*/*/*/*****(ERROR Message) Invilid Error Message ****/*/*/*///*/*/*/*/*/*/*/**@
+
+
+    <div class="col-sm-3">
+        @Html.ValidationSummary(true, "", new { @style = "color:red;font-weight:bold;font-size:20px;background-color: #b7d9b2; display:block" })
+    </div>
+
+
+
+    @*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  SignUp Page >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*@
+
+    <div id="signup" class="modal" style="display:none;height:130%">
+
+        <div class="modal-content animate">
+
+
+            @using (Html.BeginForm("SignUp", "UserSL", FormMethod.Post, new { id = "sbt" }))
+            {
+
+
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <img src="~/Content/Image/pic1.jpg" alt="Avatar" class="avatar" />
+                    </div>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                        <div class="col-md-7">
+
+                            <input type="text" name="Name" class="form-control" placeholder="Enter the Name" />
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Mobile_Number, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.Mobile_Number, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter the Mobile_Number" } })
+                            @Html.ValidationMessageFor(model => model.Mobile_Number, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Email_Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.Email_Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter the Email_Address" } })
+                            @Html.ValidationMessageFor(model => model.Email_Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter the Password" } })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <input type="text" hidden value="User" name="User_Identity" />
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter the Confirm Password" } })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                @*<div class="form-group">
+
+                    <div class="col-md-3"></div>
+                    <div class="col-md-7" style="color:black">
+
+                        @Html.Captcha(5)
+                        <p style="color:red;font-weight:bold"> @ViewBag.Captcha</p>
+
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+                    <div class="form-group">
+                        <div class="col-md-offset-3 btn btn-default " style="float: left; background-color: #89dc85; color: black ">
+                            @Html.ActionLink("Back", "Login")
+                        </div>
+
+                        <div class="col-md-offset-2" style=" float:left">
+                            <input type="submit" value="SignUp" class=" btn btn-default  " style="float: left; background-color: #89dc85 " onclick="return Validate()" />
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+    @*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Admin Login Page >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*@
+
+
+    <div id="AdminLogin" class="modal" style="display: none;">
+
+        <form class="modal-content animate" action="/UserSL/Login" method="post">
+
+            <div class="form-horizontal">
+
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('AdminLogin').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <img src="~/Content/Image/pic1.jpg" alt="Avatar" class="avatar" />
+                </div>
+
+                <hr />
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.Email_Address, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="control-label col-md-2" style="padding-left:20px">Admin Id</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email_Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Email_Address" } })
+                        @Html.ValidationMessageFor(model => model.Email_Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="control-label col-md-2" style="padding-left:20px">Password</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Password" } })
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" style="padding-left:20px">Confirm Password</label>
+                    <div class="col-md-10">
+                        <input type="password" id="cp" name="ConfirmPassword" placeholder="Enter the Confirm Password" Class="form-control " />
+                    </div>
+                </div>
+
+                <input type="text" name="Type" value="Admin" hidden />
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-offset-1 " id="Remember">
+                            <input type="checkbox" value="" />&nbsp; Remember It
+                        </div>
+                        <div class="col-md-offset-1 " id="Remember" style="background-color:#acecf7;">
+
+                            @Html.ActionLink("Forget Password", "SaveFP", "ForgetPassword")
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-offset-2" style=" float:left">
+                        <input type="submit" value="Login" class=" btn btn-default  " style="float: left; " />
+                    </div>
+
+                    <div class="col-md-offset-1 btn btn-default " style="float: left;color:black">
+                        @Html.ActionLink("Back", "Login")
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+
+
+    @*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< User Login Page >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*@
+
+
+    <div id="UserLogin" class="modal" style="display: none;">
+
+        <form class="modal-content animate" action="/UserSL/Login" method="post">
+
+            <div class="form-horizontal">
+
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('UserLogin').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <img src="~/Content/Image/pic1.jpg" alt="Avatar" class="avatar" />
+                </div>
+
+                <hr />
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.Email_Address, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="control-label col-md-2" style="padding-left:20px">User Id</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email_Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Email_Address" } })
+                        @Html.ValidationMessageFor(model => model.Email_Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="control-label col-md-2" style="padding-left:20px">Password</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Password" } })
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" style="padding-left:20px">Confirm Password</label>
+                    <div class="col-md-10">
+                        <input type="password" id="cp" name="ConfirmPassword" placeholder="Enter the Confirm Password" Class="form-control " />
+                    </div>
+                </div>
+
+                <input type="text" name="Type" value="User" hidden />
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-offset-1 " id="Remember">
+                            <input type="checkbox" value="" />&nbsp; Remember It
+                        </div>
+                        <div class="col-md-offset-1 " id="Remember" style="background-color:#acecf7;">
+
+                            @Html.ActionLink("Forget Password", "SaveFP", "ForgetPassword")
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-offset-2" style=" float:left">
+                        <input type="submit" value="Login" class=" btn btn-default  " style="float: left; " />
+                    </div>
+
+                    <div class="col-md-offset-1 btn btn-default " style="float: left;color:black">
+                        @Html.ActionLink("Back", "Login")
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+
+
+    @*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Login User Type   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*@
+
+    <div id="type">
+        <div class="animate col-sm-2" style="height: 150px;">
+
+            <div class="row" id="admin">
+                <button id="span" type="button" onclick="document.getElementById('AdminLogin').style.display='block'">I am Admin</button>
+            </div>
+
+            <div class="row" id="user">
+                <button id="span" type="button" onclick="document.getElementById('UserLogin').style.display='block'">I am User</button>
+            </div>
+            @*<div class="row" id="employee">
+                    <button id="span" type="button" onclick="document.getElementById('EmployeeLogin').style.display='block'">I am Employee</button>
+                </div>*@
+
+        </div>
+    </div>
+
+
+    @*=========================== SCRIPT ===========================================*@
+
+
+
+    <script>
+
+
+        // Get the modal
+        var modal_A = document.getElementById('AdminLogin');
+        var modal_U = document.getElementById('UserLogin');
+
+        var modal_btn = document.getElementById('type');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+
+            if (event.target == modal_A) {
+                modal_A.style.display = "none";
+
+            }
+
+            else if (event.target == modal_U) {
+                modal_U.style.display = "none";
+            }
+
+            //else if (event.target == modal_E) {
+            //    modal_E.style.display = "none";
+            // }
+
+            //else if (event.target == Error)
+            //{
+            //    modal_btn.style.display = "none";
+            //}
+
+            else {
+
+            }
+        }
+
+        //============================== Validation For  SignUp Page ==================================
+
+
+        $("#sbt").Validate({
+            rules: {
+                Name: "required",
+
+                password: {
+                    required: true,
+                    minlength: 10,
+                }
+
+            },
+            message: {
+                Name: "Plz! Enter the Name",
+
+                password: {
+                    required: "Plz! Enter the Password",
+                    minlength: "Plz!! 10 Characters",
+                }
+            }
+        })
+
+
+    </script>
+
+</body>
+</html>
+

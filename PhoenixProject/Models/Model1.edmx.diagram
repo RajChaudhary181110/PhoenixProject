@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b6485857eb834fc89d3f2757bef8a1ff" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="StplModel.Srm" Width="1.5" PointX="2.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StplModel.Multicheckbox" Width="1.5" PointX="4.375" PointY="0.5" />
+        <EntityTypeShape EntityType="StplModel.LoginSingUp" Width="1.5" PointX="4.125" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StplModel.CountryName" Width="1.5" PointX="7" PointY="2.625" />
+        <EntityTypeShape EntityType="StplModel.StateName" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="StplModel.ForgetPassword_Tbl" Width="1.5" PointX="5.875" PointY="4.25" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

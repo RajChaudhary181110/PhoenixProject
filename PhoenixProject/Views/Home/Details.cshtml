@@ -1,0 +1,376 @@
+﻿
+
+@model PhoenixProject.Models.Srm
+
+
+@*<><><><><><>><><><><><><><>  For Session Timeout Message <><><><><><><><><><><><><><>*@
+                                  @Html.Raw(TempData["msg"])
+
+
+ 
+
+<div class="col-sm-5" style="margin-left: 30%">
+    @*<h4>Srm</h4>*@
+    <p class=" col-md-offset-5" style="color: red; font-weight: bold;margin-top:15px">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID, }, new { @style = "color:red; font-weight:bold" }) ||
+        @Html.ActionLink("Back to List", "Display", new { }, new { @style = "color:red; font-weight:bold" })
+    </p>
+    <hr />
+    <dl class="dl-horizontal " download style="background-color: #acebdc; margin: 5%">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.First_Name)
+        </dt>
+        @{
+            if (Model.First_Name != null)
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.First_Name)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Last_Name)
+        </dt>
+
+
+        @{
+            if (Model.Last_Name != null)
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Last_Name)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_Address)
+        </dt>
+
+        @{
+            if (Model.Email_Address != null)
+            {
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email_Address)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Linkedin)
+        </dt>
+
+        @{
+            if (Model.Linkedin != null)
+            {
+
+                <dd>
+                    @Html.DisplayFor(model => model.Linkedin)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Designation)
+        </dt>
+
+
+        @{
+            if (Model.Designation != null)
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Designation)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary_Expectation)
+        </dt>
+
+
+        @{
+            if (Model.Salary_Expectation != null)
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Salary_Expectation)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Joining_Date)
+        </dt>
+
+
+        @{
+            if (Model.Joining_Date != null)
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Joining_Date)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile_Number)
+        </dt>
+
+
+        @{
+            if (Model.Mobile_Number != null)
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Mobile_Number)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Of_Birth)
+        </dt>
+
+        @{
+            if (Model.Date_Of_Birth != null)
+            {
+
+                <dd>
+                    @Html.DisplayFor(model => model.Date_Of_Birth)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Qualification)
+        </dt>
+
+
+        @{
+            if (Model.Qualification != null)
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Qualification)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Passing_Year)
+        </dt>
+
+        @{
+            if (Model.Passing_Year != null)
+            {
+
+                <dd>
+                    @Html.DisplayFor(model => model.Passing_Year)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+
+        @{
+            if (Model.Country != null)
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Country)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        @{
+            if (Model.State != null)
+            {
+
+                <dd>
+                    @Html.DisplayFor(model => model.State)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Experience)
+        </dt>
+
+
+        @{
+            if (Model.Experience != null)
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Experience)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Relocated)
+        </dt>
+
+
+        @{
+            if (Model.Relocated != null)
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Relocated)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Organization)
+        </dt>
+
+
+        @{
+            if (Model.Organization != null)
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Organization)
+                </dd>
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        @{
+            if (Model.Description != null)
+            {
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+            }
+            else
+            {
+                <dd>
+                    <span style="color:red">No Data !</span>
+                </dd>
+            }
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Photo)*@
+
+            <img src="~/Content/PassportSizePhoto/@Model.Photo" height="40" width="40" />
+            <a href="~/Content/PassportSizePhoto/" download style="color: blue; font-weight: bold"><u>Download</u></a>
+        </dd>
+        <br />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resume)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Resume)*@
+
+            <img src="~/Content/Resume/@Model.Resume" height="40" width="40" />
+            <a href="~/Content/PassportSizePhoto/" download style="color:blue; font-weight:bold"><u>Download</u></a>
+        </dd>
+    </dl>
+</div>
+

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<style>
+    #about {
+        background-image: url("../Content/Image/about.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 500px;
+        width: 100%;
+        background-size: 100% 90%
+    }
+
+    p {
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        color: mediumpurple;
+        padding-top: 150px
+    }
+
+    span {
+        font-size: 20px;
+        font-weight: bold;
+        padding-left: 40%
+    }
+</style>
+
+@*<><><><><><>><><><><><><><>  For Session Timeout Message <><><><><><><><><><><><><><>*@
+                              @Html.Raw(TempData["msg"])
+
+
+
+<div id="about">
+
+    <p>It's Development Company</p>
+    <span>For More Details<a href="https://www.stpl.biz" style="color:red"><u> Click Here</u></a></span>
+</div>
+

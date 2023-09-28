@@ -1,0 +1,381 @@
+﻿@model PhoenixProject.Models.MainMobel
+
+
+@{
+    ViewBag.Title = "Home Page";
+
+
+}
+
+
+
+<html>
+<head>
+    <style>
+        #bgimg {
+            background-image: url("../Content/Image/pic4.jpg");
+             background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+           
+          
+        }
+
+        #formdiv {
+            /* background-image: url("../Content/Image/formpic.jpg");
+             background-position: center;*/
+            background-repeat: no-repeat;
+            /* background-attachment: fixed;*/
+            background-size: 100% 100%;
+            /* opacity:0.7;*/
+            color: black;
+            border: 2px solid black;
+            background-color: #ffd8d1;
+        }
+
+        #mlt {
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    @*<><><><><><>><><><><><><><>  For Session Timeout Message <><><><><><><><><><><><><><>*@
+                                    @Html.Raw(TempData["msg"])
+
+
+
+    <div class="container-fluid" id="bgimg">
+        <div class="row">
+            <div class="col-sm-4" style="background-color:aqua; "></div>
+
+
+            <div class="col-sm-4" id="formdiv">
+
+                <form action="/Home/Index" method="post" enctype="multipart/form-data" onsubmit="return ValidateForm(this);">
+
+
+                    <table border="0" cellpadding="5" cellspacing="0">
+                        <tr>
+                            <td style="width: 50%">
+                                <label><b>First name *</b></label><br />
+                                <input name="First_Name" placeholder="First name" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                                <span id="Sp"></span>
+                            </td>
+                            <td style="width: 50%">
+                                <label style="margin-left:5px"><b>Last name *</b></label><br />
+                                <input name="Last_Name" placeholder="Last name" type="text" maxlength="50" style="width: 100%; max-width: 260px; margin-left: 5px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="Email_Address"><b>Email *</b></label><br />
+                                <input name="Email_Address" placeholder="Email" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="Linkedin"><b>Linkedin ID</b></label><br />
+                                <input name="Linkedin" type="text" maxlength="255" value="https://" style="width:100%;max-width: 535px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" id="mlt">
+                                <label><b>Designation you are applying for</b></label><br />
+
+                                @*<input name="Designation" placeholder="Designation" type="text" maxlength="100" style="width:100%;max-width: 535px" />
+
+                                    <input type="checkbox" name="DotNet" value="DotNet" />Dot Net
+                                        <input type="checkbox" name="PHP" value="PHP" />PHP
+                                        <input type="checkbox" name="Python" value="Python" />Python
+                                        <input type="checkbox" name="Java" value="Java" />Java
+                                        <input type="checkbox" name="NetWorking" value="NetWorking" />Net Working
+                                        <input type="checkbox" name="Testing" value="Testing" />Testing*@
+
+
+
+                                @*@for (int i = 0; i < Model.MltObj.Count; i++)
+                                    {
+                                        @Html.CheckBoxFor(model => model.MltObj[i].checkConfirm, new { @class = "text-dangers" })
+                                        @Model.MltObj[i].Technology
+                                        @Html.HiddenFor(model => model.MltObj[i].Id)
+                                        @Html.HiddenFor(model => model.MltObj[i].Technology)
+
+                                    }*@
+
+
+                                @for (int i = 0; i < Model.Position.Count; i++)
+                                {
+                                    @Html.CheckBoxFor(model => model.Position[i].CheckConfirm, new { @class = "text-dangers" })
+                                    @Model.Position[i].Technology
+                                    @Html.HiddenFor(model => model.Position[i].Id)
+                                    @Html.HiddenFor(model => model.Position[i].Technology)
+                                }
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label><b>Salary Requirements</b></label><br />
+                                <input name="Salary_Expectation" placeholder="Salary Requirements" type="number" maxlength="50" style="width:100%;max-width: 260px" />
+                            </td>
+                            <td>
+                                <label style="margin-left:35px"><b>Joining</b></label><br />
+                                @*<input name="JoiningDate" type="text" maxlength="50" style="width:100%;max-width: 260px" />*@
+                                <select name="Joining_Date" style="margin-left: 35px; width: 100%; max-width: 130px">
+                                    <option value="">Select Date</option>
+                                    <option>Immediately</option>
+                                    <option>Under 1 Week</option>
+                                    <option>Within 15 days</option>
+                                    <option>1 Months</option>
+
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label><b>Mobile Number *</b></label><br />
+                                <input name="Mobile_Number" placeholder="Mobile Number" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                            </td>
+                            <td>
+                                <label style="margin-left:35px">Date of Birth</label><br />
+                                <input type="date" name="Date_Of_Birth" style="margin-left: 35px; width: 100%; max-width: 130px" />
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <label><b>Qualification</b></label><br />
+                                <input name="Qualification" placeholder="Qualification" type="text" maxlength="50" />
+                            </td>
+                            <td>
+                                <label style="margin-left:35px">Passing Year</label><br />
+                                @*<input type="date" style="margin-left:35px"/>*@
+                                <input type="number" name="Passing_Year" placeholder="YYYY" min="1990" max="2023" style="margin-left: 35px; width: 100%; max-width: 130px">
+                                <script></script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+
+                                <lable><b>Country</b></lable><br />
+
+                                @Html.DropDownListFor(model => model.Country_Id, ViewBag.CountryList as SelectList, "--Select Country Name--")
+
+
+                            </td>
+
+
+                            <td>
+                                <lable maxlength="50" style="margin-left: 35px; width: 100%; max-width: 260px"><b>State</b></lable><br />
+
+                                @Html.DropDownListFor(model => model.State_Id, new SelectList(""), "--Select State Name--", new { @maxlength = "50", @style = "margin-left: 35px; width: 80%; max-width: 200px" })
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="Photo"><b>Passport Size Photo</b></label><br />
+                                <input type="file" name="Photo" id="pic" style=" width: 100%; max-width: 150px" />
+                                <b><span id="shw"></span></b>
+                            </td>
+
+                            <td>
+                                <label for="Experience" style="margin-left:35px"><b>Total Experience</b></label><br />
+                                <input type="text" placeholder="Experience" name="Experience" style=" width: 100%; max-width: 130px; margin-left: 35px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="Resume"><b>Resume</b></label><br />
+                                <input type="file" name="Resume" id="pic2" style=" width: 100%; max-width: 150px" />
+                                <b><span id="shw2"></span></b>
+                            </td>
+                            <td>
+                                <label style="margin-left:35px"><b>Are you willing to Relocate?</b></label><br />
+                                <input name="Relocated" type="radio" value="Yes" style="margin-left:28px" /> Yes
+                                <input name="Relocated" type="radio" value="No" /> No
+                                <input name="Relocated" type="radio" value="NotSure" /> Not sure
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <label><b>Last company you worked </b></label><br />
+                                <input name="Organization" placeholder="Company Name / About Company etc." type="text" maxlength="100" style="width:100%;max-width: 535px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label><b>Reference / Comments / Questions</b></label><br />
+                                <textarea name="Description" rows="3" style="width:100%;max-width: 535px"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input name="ResetBtn" type="reset" value="Reset" style="background-color:#f63434; font-weight:bold; color:white" />
+                            </td>
+                            <td colspan="2">
+                                @*<div style="float: right"> <a href="https://www.100forms.com" id="lnk100" title="form to email">form to email</a></div>
+                                    <script src="https://www.100forms.com/js/FORMKEY:3GBQCDPAZXAK/SEND:my@email.com" type="text/javascript"></script>*@
+                                <input name="SubmitBtn" type="submit" value="Send " id="btn" style="background-color:#5276ff; font-weight:bold; color:white; margin-left:65%" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <a href="/Home/Display">Data List</a>
+
+            </div>
+
+
+            <div class="col-sm-4" style="background-color: hotpink;"></div>
+
+
+        </div>
+    </div>
+    <script type="text/javascript">
+
+
+
+        function ValidateForm(frm) {
+
+            if (frm.First_Name.value == "") {
+                alert('First name is required.');
+                /*frm.First_Name.focus();*/
+                /*$("#Sp").html("error msg");*/
+                return false;
+            }
+            if (frm.Last_Name.value == "") {
+                alert('Last name is required.');
+                frm.Last_Name.focus();
+                return false;
+            }
+            if (frm.Email_Address.value == "") {
+                alert('Email address is required.');
+                frm.Email_Address.focus();
+                return false;
+            }
+            if (frm.Email_Address.value.indexOf("@@") < 1 || frm.Email_Address.value.indexOf(".") < 1) {
+                alert('Please enter a valid email address.');
+                frm.Email_Address.focus();
+                return false;
+            }
+            //if (frm.Linkedin.value == "") {
+            //    alert('Linkedin is required.');
+            //    frm.Linkedin.focus();
+            //    return false;
+            //}
+            if (frm.Mobile_Number.value == "") {
+                alert('Mobile Number is required.');
+                frm.Mobile_Number.focus();
+                return false;
+
+            }
+            else {
+
+                return true;
+            }
+        }
+
+
+        //+-+-+-+-+-+-+-+-+-+-+-+-+-++--+ -+-+-+-+-+-+-+-+-+-+--+ -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        //========================IMAGE Type Validation============================
+        //+-+-+-+-+-+-+-+-+-+-+-+-+-++--+ -+-+-+-+-+-+-+-+-+-+--+ -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+        $(document).ready(function () {
+
+
+            //=======================Photo Photo Photo Photo Photo Photo Photo============================================
+
+            $("#pic").change(function () {
+
+                var Extention = $(this).val().split('.').pop().toLowerCase();
+                var ValidFile = ["jpg", 'jpeg', "png"];
+
+                if ($.inArray(Extention, ValidFile) == -1) {
+
+                    $("#shw").text(" Sorry ! It's not valid File only jpg, jpeg, png are Valid ").show();
+                    $("#shw").css("color", "red");
+                    $(this).replaceWith($(this).val('').clone(true));
+                    $('#btn').prop('disabled', true);
+                }
+                else
+                    if ($(this).get(0).files[0].size > (20000)) {
+                        $("#shw").text("sorry! only allow 32 kb maximum size");
+                        $("#shw").css("color", "red");
+                        $(this).replaceWith($(this).val('').clone(true));
+                        $("#btn").prop("disabled", true)
+                    }
+
+                    else {
+                        //Clear and Hide message span
+                        $('#shw').text('').hide();
+                        //Enable Submit Button
+                        $('#btn').prop('disabled', false);
+                    }
+            });
+
+            //=====================Resume Resume ResumeResume Resume Resume Resume Resume Resume Resume =======================================================
+
+
+            $("#pic2").change(function () {
+
+                var Extention = $(this).val().split('.').pop().toLowerCase();
+                var ValidFile = ["jpg", 'jpeg', "png"];
+
+                if ($.inArray(Extention, ValidFile) == -1) {
+
+                    $("#shw2").text(" Sorry ! It's not valid File only jpg, jpeg, png are Valid ").show();
+                    $("#shw2").css("color", "red");
+                    $(this).replaceWith($(this).val('').clone(true));
+                    $('#btn').prop('disabled', true);
+                }
+                else
+                    if ($(this).get(0).files[0].size > (20000)) {
+                        $("#shw2").text("sorry! only allow 32 kb maximum size");
+                        $("#shw2").css("color", "red");
+                        $(this).replaceWith($(this).val('').clone(true));
+                        $("#btn").prop("disabled", true)
+                    }
+
+                    else {
+                        //Clear and Hide message span
+                        $('#shw2').text('').hide();
+                        //Enable Submit Button
+                        $('#btn2').prop('disabled', false);
+                    }
+            });
+        });
+
+        //<><><><><><><><><><><><><><><><> For Cascading Drop Down List Data Get <><><><><><><><><><><><><><><><><><><><><>
+
+        $(document).ready(function () {
+
+
+            $("#Country_Id").change(function () {
+
+                $.get("/Home/GetStateList", { id: $("#Country_Id").val() }, function (data) {
+
+                    $("#State_Id").empty();
+                    $.each(data, function (index, row) {
+
+                        $("#State_Id").append("<option value='" + row.State_Id + "'>" + row.State_Name + "</option>")
+                    });
+                });
+            });
+        });
+
+
+    </script>
+
+
+
+</body>
+</html>
+

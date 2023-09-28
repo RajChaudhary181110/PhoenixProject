@@ -1,0 +1,194 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <style>
+
+        /*============================== Searching  Navbar   Coding =============================================*/
+
+
+        .topnav .search-container {
+            float: right;
+        }
+
+        .topnav input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+
+        .topnav .search-container button {
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /*============================== DropDown Navbar   Coding =============================================*/
+
+
+
+    </style>
+
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#7df3de">
+        <div class="container">
+            @*<div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>*@
+
+
+
+            <div class="navbar-collapse collapse">
+
+                <div class="col-sm-1">
+                    <img src="~/Content/Image/stplLogo.png" style="height:50px;" />
+                </div>
+                
+
+                <div class="col-sm-5">
+
+                    <ul class="nav navbar-nav">
+                        @*<li style="height:20px; width:20px"><img src="~/Content/Image/stplLogo.png" /></li>*@
+                        <li>@Html.ActionLink("Apply", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("DataList", "Display", "Home")</li>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+                            <li>@Html.ActionLink("LogOut", "LogOut", "UserSL")</li>
+
+                        }
+                        else
+                        {
+                            if (Session["UserName"]!=null)
+                            {
+                             <li>@Html.ActionLink("LogOut", "LogOut", "UserSL")</li>
+                            }
+                            else
+                            {
+                              
+                            }
+                        }
+                    </ul>
+                </div>
+
+                <div class="col-sm-4 topnav ">
+
+                    <form action="https://www.stpl.biz" class="search-container">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit" id="fafa"><i class="fa fa-search"></i></button>
+                    </form>
+
+                </div>
+
+                <div class="col-sm-2 " id="UserShowCls">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="row">
+
+                            <div class="col-sm-2">
+                                <img src="~/Content/Image/Usericon.png" height="30px" width="30px" style="border-radius:50%" />
+                            </div>
+
+                            <div class="col-sm-10" id="UserShow">
+                                <a href="#" style="color:black">@User.Identity.Name</a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        if (Session["UserName"] != null)
+                        {
+                            <div class="row">
+
+                                <div class="col-sm-2">
+                                    <img src="~/Content/Image/Usericon.png" height="30px" width="30px" style="border-radius:50%" />
+                                </div>
+
+                                <div class="col-sm-10" id="UserShow">
+                                    <a href="#" style="color:black">@Session["UserName"]</a>
+                                </div>
+                            </div>
+                        }
+                       
+
+                    }
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="container-fluid">
+        @RenderBody()
+
+    </div>
+
+    <footer class="navbar navbar-inverse navbar-fixed-bottom " style="background-color:#f69090; height:50px; width:100%;">
+        <div class="container-fluid">
+            <center id="footer">Copyright by @@Raj Chaudhary</center>
+        </div>
+    </footer>
+
+    <style>
+        #footer {
+            font-weight: bold;
+            padding-top: 15px;
+        }
+        #UserShowCls {
+           
+            padding-top: 10px;
+        }
+        #UserShow{
+           
+           font-weight:bold; 
+          padding-top:5px;  
+        }
+        #UserShow a:hover {
+            background-color: yellow;
+        }
+    </style>
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+
+</body>
+</html>

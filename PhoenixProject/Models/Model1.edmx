@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StplModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CountryName">
+          <Key>
+            <PropertyRef Name="Country_Id" />
+          </Key>
+          <Property Name="Country_Id" Type="int" Nullable="false" />
+          <Property Name="Country_Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ForgetPassword_Tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date_Time" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LoginSingUp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Mobile_Number" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email_Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="User_Identity" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Multicheckbox">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Technology" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Srm">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email_Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Linkedin" Type="nvarchar" MaxLength="100" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="100" />
+          <Property Name="Salary_Expectation" Type="nvarchar" MaxLength="100" />
+          <Property Name="Joining_Date" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mobile_Number" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Of_Birth" Type="nvarchar" MaxLength="100" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="100" />
+          <Property Name="Passing_Year" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="100" />
+          <Property Name="Experience" Type="nvarchar" MaxLength="100" />
+          <Property Name="Relocated" Type="nvarchar" MaxLength="100" />
+          <Property Name="Organization" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Resume" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="StateName">
+          <Key>
+            <PropertyRef Name="State_Id" />
+          </Key>
+          <Property Name="State_Id" Type="int" Nullable="false" />
+          <Property Name="State_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Function Name="SelectDataFinally" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="StplModelStoreContainer">
+          <EntitySet Name="CountryName" EntityType="Self.CountryName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ForgetPassword_Tbl" EntityType="Self.ForgetPassword_Tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginSingUp" EntityType="Self.LoginSingUp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Multicheckbox" EntityType="Self.Multicheckbox" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Srm" EntityType="Self.Srm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateName" EntityType="Self.StateName" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StplModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Srm">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Linkedin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Salary_Expectation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Joining_Date" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_Number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Of_Birth" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Passing_Year" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Experience" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Relocated" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Organization" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Resume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="StplEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Srms" EntityType="Self.Srm" />
+          <EntitySet Name="Multicheckboxes" EntityType="StplModel.Multicheckbox" />
+          <EntitySet Name="LoginSingUps" EntityType="StplModel.LoginSingUp" />
+          <EntitySet Name="CountryNames" EntityType="StplModel.CountryName" />
+          <EntitySet Name="StateNames" EntityType="StplModel.StateName" />
+          <EntitySet Name="ForgetPassword_Tbl" EntityType="StplModel.ForgetPassword_Tbl" />
+          <FunctionImport Name="SelectDataFinally" ReturnType="Collection(StplModel.SelectDataFinally_Result)" />
+        </EntityContainer>
+        <EntityType Name="Multicheckbox">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Technology" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LoginSingUp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User_Identity" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CountryName">
+          <Key>
+            <PropertyRef Name="Country_Id" />
+          </Key>
+          <Property Name="Country_Id" Type="Int32" Nullable="false" />
+          <Property Name="Country_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StateName">
+          <Key>
+            <PropertyRef Name="State_Id" />
+          </Key>
+          <Property Name="State_Id" Type="Int32" Nullable="false" />
+          <Property Name="State_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ForgetPassword_Tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="SelectDataFinally_Result">
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="String" Name="First_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Last_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email_Address" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Linkedin" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Designation" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Salary_Expectation" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Joining_Date" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Mobile_Number" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Date_Of_Birth" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Qualification" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Passing_Year" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Country_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="State_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Experience" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Relocated" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Organization" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Photo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Resume" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StplModelStoreContainer" CdmEntityContainer="StplEntities">
+          <EntitySetMapping Name="Srms">
+            <EntityTypeMapping TypeName="StplModel.Srm">
+              <MappingFragment StoreEntitySet="Srm">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Email_Address" ColumnName="Email_Address" />
+                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Salary_Expectation" ColumnName="Salary_Expectation" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+                <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Passing_Year" ColumnName="Passing_Year" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Relocated" ColumnName="Relocated" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Multicheckboxes">
+            <EntityTypeMapping TypeName="StplModel.Multicheckbox">
+              <MappingFragment StoreEntitySet="Multicheckbox">
+                <ScalarProperty Name="Technology" ColumnName="Technology" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginSingUps">
+            <EntityTypeMapping TypeName="StplModel.LoginSingUp">
+              <MappingFragment StoreEntitySet="LoginSingUp">
+                <ScalarProperty Name="User_Identity" ColumnName="User_Identity" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="Email_Address" ColumnName="Email_Address" />
+                <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryNames">
+            <EntityTypeMapping TypeName="StplModel.CountryName">
+              <MappingFragment StoreEntitySet="CountryName">
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateNames">
+            <EntityTypeMapping TypeName="StplModel.StateName">
+              <MappingFragment StoreEntitySet="StateName">
+                <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+                <ScalarProperty Name="State_Name" ColumnName="State_Name" />
+                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ForgetPassword_Tbl">
+            <EntityTypeMapping TypeName="StplModel.ForgetPassword_Tbl">
+              <MappingFragment StoreEntitySet="ForgetPassword_Tbl">
+                <ScalarProperty Name="Date_Time" ColumnName="Date_Time" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SelectDataFinally" FunctionName="StplModel.Store.SelectDataFinally">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="StplModel.SelectDataFinally_Result">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Email_Address" ColumnName="Email_Address" />
+                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Salary_Expectation" ColumnName="Salary_Expectation" />
+                <ScalarProperty Name="Joining_Date" ColumnName="Joining_Date" />
+                <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+                <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Passing_Year" ColumnName="Passing_Year" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="State_Name" ColumnName="State_Name" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Relocated" ColumnName="Relocated" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

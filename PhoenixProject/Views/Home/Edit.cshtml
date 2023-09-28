@@ -1,0 +1,320 @@
+﻿@model PhoenixProject.Models.Srm
+
+
+
+
+
+
+
+<html>
+<head>
+    <style>
+        #bgimg {
+            /*background-image: url("../Content/Image/pic4.jpg");*/
+            /* background-position: center;*/
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        #formdiv {
+            /*background-image: url("../Content/Image/formpic.jpg");*/
+            /* background-position: center;*/
+            background-repeat: no-repeat;
+            /* background-attachment: fixed;*/
+            background-size: 100% 100%;
+           /* opacity:;*/
+            color: black;
+        }
+
+        #mlt {
+            font-weight: bold;
+        }
+
+        #pic1 {
+            background-image: url('../../Content/PassportSizePhoto/@Model.Photo');         
+            background-size: 100% 100%;
+        }
+        #pic2 {
+            background-image: url('../../Content/Resume/@Model.Resume');           
+            background-size: 100% 100%;
+        }
+    </style>
+
+</head>
+<body>
+    @*<><><><><><>><><><><><><><>  For Session Timeout Message <><><><><><><><><><><><><><>*@
+                                       @Html.Raw(TempData["msg"])
+
+
+
+
+    <div class="container-fluid" id="bgimg">
+        <div class="row">
+            <div class="col-sm-4" style="background-color:aqua; "></div>
+
+
+            <div class="col-sm-4" id="formdiv">
+
+                <form action="/Home/Edit" method="post" enctype="multipart/form-data" onsubmit="return ValidateForm(this);">
+
+                    <input type="hidden" value="@Model.CustomerID" name="id" />
+
+                    <table border="0" cellpadding="5" cellspacing="0">
+                        <tr>
+                            <td style="width: 50%">
+                                <label><b>First name *</b></label><br />
+                                <input name="First_Name" placeholder="First name" value="@Model.First_Name" type="text" maxlength="50" style="width:100%;max-width: 260px" />
+                                <span id="Sp"></span>
+                            </td>
+                            <td style="width: 50%">
+                                <label style="margin-left:5px"><b>Last name *</b></label><br />
+                                <input name="Last_Name" placeholder="Last name" value="@Model.Last_Name" type="text" maxlength="50" style="width: 100%; max-width: 260px; margin-left: 5px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="Email_Address"><b>Email *</b></label><br />
+                                <input name="Email_Address" placeholder="Email" type="text" maxlength="100" style="width:100%;max-width: 535px" value="@Model.Email_Address" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="Linkedin"><b>Linkedin ID</b></label><br />
+                                <input name="Linkedin" type="text" maxlength="255" style="width:100%;max-width: 535px" value="@Model.Linkedin" />
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="2" id="mlt">
+                                <label><b>Designation you are applying for</b></label><br />
+
+                                @for (int i = 0; i < Model.Position.Count; i++)
+                                {
+                                    @Html.CheckBoxFor(model => model.Position[i].CheckConfirm, new { @class = "text-dangers" })
+                                    @Model.Position[i].Technology
+                                    @Html.HiddenFor(model => model.Position[i].Id)
+                                    @Html.HiddenFor(model => model.Position[i].Technology)
+                                }
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <label><b>Salary Requirements</b></label><br />
+                                <input name="Salary_Expectation" placeholder="Salary Requirements" type="number" maxlength="50" style="width:100%;max-width: 260px" value="@Model.Salary_Expectation" />
+                            </td>
+                            <td>
+                                <label style="margin-left:35px"><b>Joining</b></label><br />
+
+                                <select name="Joining_Date" style="margin-left: 35px; width: 100%; max-width: 130px">
+                                    <option value="@Model.Joining_Date">@Model.Joining_Date </option>
+                                    <option>Immediately</option>
+                                    <option>Under 1 Week</option>
+                                    <option>Within 15 days</option>
+                                    <option>1 Months</option>
+
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label><b>Mobile Number *</b></label><br />
+                                <input name="Mobile_Number" placeholder="Mobile Number" type="text" maxlength="50" style="width:100%;max-width: 260px" value="@Model.Mobile_Number" />
+                            </td>
+                            <td>
+                                <label style="margin-left:35px">Date of Birth</label><br />
+                                <input type="date" name="Date_Of_Birth" style="margin-left: 35px; width: 100%; max-width: 130px" value="@Model.Date_Of_Birth" />
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <label><b>Qualification</b></label><br />
+                                <input name="Qualification" placeholder="Qualification" type="text" maxlength="50" value="@Model.Qualification" />
+                            </td>
+                            <td>
+                                <label style="margin-left:35px">Passing Year</label><br />
+
+                                <input type="number" name="Passing_Year" placeholder="YYYY" min="1990" max="2023" style="margin-left: 35px; width: 100%; max-width: 130px" value="@Model.Passing_Year">
+                                <script>
+                                    document.querySelector("input[type=number]")
+                                        .oninput = e => console.log(new Date(e.target.valueAsNumber, 0, 1))
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+
+                                <lable><b>Country</b></lable><br />
+
+
+                                @Html.DropDownListFor(model => model.Country_Name, ViewBag.CountryList as SelectList, "--Select Count--")
+
+
+
+                            </td>
+
+
+                            <td>
+                                <lable style="margin-left:35px"><b>State</b></lable><br />
+
+
+
+                                @Html.DropDownListFor(model => model.State_Name, new SelectList(""), "--Select State--")
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="photo"><b>passport size photo</b></label><br />
+                                <input type="text" hidden value="@Model.Photo" name="photo" style=" width: 100%; max-width: 150px" />
+                                <img height="60px" width="60px" id="pic1" value="@Model.Photo" />
+                            </td>
+
+                            <td>
+                                <label for="Experience" style="margin-left:35px"><b>Total Experience</b></label><br />
+                                <input type="text" placeholder="Experience" name="Experience" style=" width: 100%; max-width: 130px; margin-left: 35px" value="@Model.Experience" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="Resume"><b>Resume</b></label><br />
+                                <input type="text" hidden value="@Model.Resume" name="Resume" style=" width: 100%; max-width: 150px" />
+                                <img height="60px" width="60px" id="pic2" value="@Model.Resume" />
+
+                            </td>
+
+                            <td>
+                                <label style="margin-left:35px"><b>Are you willing to Relocate?</b></label><br />
+                                @if (Model.Relocated == "Yes")
+                                {
+                                    <input name="Relocated" checked type="radio" value="Yes" style="margin-left:28px" /><span>Yes</span>
+                                    <input name="Relocated" type="radio" value="No" /><span>No</span>
+                                    <input name="Relocated" type="radio" value="NotSure" /><span>NotSure</span>
+                                }
+                                else if (Model.Relocated == "No")
+                                {
+                                    <input name="Relocated" type="radio" value="Yes" style="margin-left:28px" /><span>Yes</span>
+                                    <input name="Relocated" checked type="radio" value="No" /><span>No</span>
+                                    <input name="Relocated" type="radio" value="NotSure" /><span>NotSure</span>
+                                }
+                                else if (Model.Relocated == "NotSure")
+                                {
+                                    <input name="Relocated" type="radio" value="Yes" style="margin-left:28px" /><span>Yes</span>
+                                    <input name="Relocated" type="radio" value="No" /><span>No</span>
+                                    <input name="Relocated" checked type="radio" value="NotSure" /><span>NotSure</span>
+                                }
+
+                                @*<input name="Relocated" type="radio" checked value="@Model.Relocated" />@Model.Relocated*@
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <label><b>Last company you worked </b></label><br />
+                                <input name="Organization" placeholder="Company Name / About Company etc." type="text" maxlength="100" style="width:100%;max-width: 535px" value="@Model.Organization" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label><b>Reference / Comments / Questions</b></label><br />
+                                <textarea name="Description" rows="3" style="width:100%;max-width: 535px" value="@Model.Description"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input name="ResetBtn" type="reset" value="Reset" style="background-color:#f63434; font-weight:bold; color:white" />
+                            </td>
+                            <td colspan="2">
+
+                                <input name="SubmitBtn" type="submit" value="Send " style="background-color:#5276ff; font-weight:bold; color:white; margin-left:65%" />
+
+
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+
+
+            <div class="col-sm-4"></div>
+
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+
+
+        function ValidateForm(frm) {
+
+            if (frm.First_Name.value == "") {
+                alert('First name is required.');
+                /*frm.First_Name.focus();*/
+                /*$("#Sp").html("error msg");*/
+                return false;
+            }
+            if (frm.Last_Name.value == "") {
+                alert('Last name is required.');
+                frm.Last_Name.focus();
+                return false;
+            }
+            if (frm.Email_Address.value == "") {
+                alert('Email address is required.');
+                frm.Email_Address.focus();
+                return false;
+            }
+            if (frm.Email_Address.value.indexOf("@@") < 1 || frm.Email_Address.value.indexOf(".") < 1) {
+                alert('Please enter a valid email address.');
+                frm.Email_Address.focus();
+                return false;
+            }
+            //if (frm.Linkedin.value == "") {
+            //    alert('Linkedin is required.');
+            //    frm.Linkedin.focus();
+            //    return false;
+            //}
+            if (frm.Mobile_Number.value == "") {
+                alert('Mobile Number is required.');
+                frm.Mobile_Number.focus();
+                return false;
+
+            }
+            else {
+
+                return true;
+            }
+        }
+
+
+
+        $(document).ready(function () {
+
+
+            $("#Country_Name").change(function () {
+
+                $.get("/Home/GetStateList", { id: $("#Country_Name").val() }, function (data) {
+
+                    $("#State_Name").empty();
+                    $.each(data, function (index, row) {
+
+                        $("#State_Name").append("<option value='" + row.State_Id + "'>" + row.State_Name + "</option>")
+                    });
+                });
+            });
+        });
+
+
+
+
+    </script>
+
+</body>
+</html>

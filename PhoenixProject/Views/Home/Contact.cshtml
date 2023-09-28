@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+
+        #divSld {
+            height: 350px;
+            width: 100%
+        }
+
+        #inSld {
+            height: 100%;
+            width: 100%
+        }
+
+            #inSld img {
+                background-repeat: no-repeat, repeat;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                /*background-size: 100% 100%;*/
+                /*  width:100%;
+                height:200px*/
+                height: 100%;
+                width: 100%
+            }
+    </style>
+
+</head>
+<body>
+
+    @*<><><><><><>><><><><><><><>  For Session Timeout Message <><><><><><><><><><><><><><>*@
+                                      @Html.Raw(TempData["msg"])
+
+
+
+
+    <div class="container-fluid">
+
+
+
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active" style="background-color: #7df3de; border: 2px solid #7df3de"></li>
+                <li data-target="#myCarousel" data-slide-to="1" style="background-color: #7df3de; border: 2px solid #7df3de"></li>
+                <li data-target="#myCarousel" data-slide-to="2" style="background-color: #7df3de; border: 2px solid #7df3de"></li>
+                <li data-target="#myCarousel" data-slide-to="3" style="background-color: #7df3de; border: 2px solid #7df3de"></li>
+                <li data-target="#myCarousel" data-slide-to="4" style="background-color: #7df3de; border: 2px solid #7df3de"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" id="divSld">
+
+                <div class="item active" id="inSld">
+                    <img src="~/Content/Image/slid1.jpg" />
+                </div>
+
+                <div class="item" id="inSld">
+                    <img src="~/Content/Image/slid2.jpg" />
+                </div>
+
+                <div class="item" id="inSld">
+                    <img src="~/Content/Image/slid3.jpg" />
+                </div>
+
+                <div class="item" id="inSld">
+                    <img src="~/Content/Image/slid4.jpg" />
+                </div>
+
+                <div class="item" id="inSld">
+                    <img src="~/Content/Image/slid5.jpg" />
+                </div>
+
+
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" style="color: #7df3de;"></span>
+                @*<span class="sr-only"  style="background-color: #7df3de; border: 2px solid #7df3de">Previous</span>*@
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" style="color: #7df3de;"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4" style="float: left; background-color: #ff6a00; height: 150px "></div>
+            <div class="col-md-4" style="float: left; background-color: #ff6a00; height: 150px">
+                <h3>Contact Method</h3>
+                <a href="https://www.facebook.com/srmtechsol">Facebook</a><br />
+                <a href="https://twitter.com/stpl_inc">Twitter</a><br />
+                <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQEzWXcOQ7ukZAAAAYWfE5HQFHitKYq9m7TKQqXxx5YocgqDeaxJYW2YYXOFPG5jC1Ymx_-TmJUCMLoIkW_gpw7v8-hd-zWjhPKN1WUTxWWh9ePVqUIUucT0bCVl32jRzgJ15l8=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fstpl">linkedin</a><br />
+                <a href=" info@stpl.biz |  1-650-585-2906 (US) / +91-895-363-7777 (IND)">Location</a><br />
+                <a href=""></a>
+                <a href=""></a>
+
+
+            </div>
+            <div class="col-md-4" style="float: left; background-color: #ff6a00; height: 150px "></div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+

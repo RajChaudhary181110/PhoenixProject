@@ -1,0 +1,477 @@
+﻿@model IEnumerable<PhoenixProject.Models.SelectDataFinally_Result>
+@*@model IEnumerable<PhoenixProject.Models.Srm>*@
+
+
+
+<html>
+<head>
+    <!--Latest compiled and minified CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .empty {
+            background-image: url('../../Content/Image/Empty.jfif');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 50% 50%;
+        }
+
+        div.sticky {
+            height: 15px;
+            position: fixed;
+            top: 0;
+            padding: 47px;
+            /* background-color: white; */
+            width: 100%;
+        }
+        #nodata{               
+            position: fixed;                  
+            margin-top: 80px;
+            margin-left:40%;
+        }
+        
+    </style>
+</head>
+<body>
+
+
+    @*<><><><><><>><><><><><><><>  For Session Timeout Message <><><><><><><><><><><><><><>*@
+    @Html.Raw(TempData["msg"])
+
+
+
+
+    <!--<div class="row" style="height:35px">
+        <div class="sticky">-->
+    @*=-=-=-=-=-=-=-=-=-=-=-=-=-=- Searching Method =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-*@
+    <!--<div class="col-sm-10 " style="margin-top:10px; margin-left:60%">-->
+    @*@using (Html.BeginForm("Display", "Home", FormMethod.Get))*@
+    <!--{-->
+    @*<b>
+            Search Option:
+        </b>
+
+        @Html.RadioButton("option", "Email_Address")
+        <text> Email_Address </text>
+
+        @Html.RadioButton("option", "Country_Name")
+        <text>Country_Name</text>
+
+        @Html.RadioButton("option", "Mobile_Number")
+        <text>Mobile_Number</text>
+
+        @Html.RadioButton("option", "First_Name")
+        <text>First_Name</text>*@
+
+    @*@Html.TextBox("search")*@
+    <!--<input type="submit" value="Search..." style="border: 1px solid black; border-radius: 20px 20px 20px 20px; background-color:#b1e2f2; ">
+
+                }
+            </div>
+        </div>
+
+    </div>-->
+
+
+    <table class="table table-bordered tab-content table-striped table-hover table-responsive" id="Mytable">
+        <thead>
+            <tr class="danger">
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomerID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Last_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email_Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Linkedin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Designation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salary_Expectation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Joining_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile_Number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date_Of_Birth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Qualification)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Passing_Year)
+                </th>
+
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Country)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.State)
+                    </th>*@
+
+                @*===================== ***Store Procedure Process*** ====================*@
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Country_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.State_Name)
+                </th>
+
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Experience)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Relocated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Organization)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Photo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Resume)
+                </th>
+                <th>Action</th>
+            </tr>
+
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr class="success">
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustomerID)
+                    </td>
+
+
+                    @if (item.First_Name != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.First_Name)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.Last_Name != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Last_Name)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.Email_Address != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email_Address)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.Linkedin != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Linkedin)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.Designation != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Designation)
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.Salary_Expectation != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Salary_Expectation)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.Joining_Date != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Joining_Date)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.Mobile_Number != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mobile_Number)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.Date_Of_Birth != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date_Of_Birth)
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+
+                    @if (item.Qualification != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Qualification)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.Passing_Year != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Passing_Year)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Country)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.State)
+                        </td>*@
+
+
+                    @*===================== ***Store Procedure Process*** ====================*@
+
+
+                    @if (item.Country_Name != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Country_Name)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.State_Name != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.State_Name)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+
+                    @if (item.Experience != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Experience)
+                        </td>
+
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.Relocated != null)
+                    {
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Relocated)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.Organization != null)
+                    {
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Organization)
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    @if (item.Description != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td class="empty">
+                        </td>
+                    }
+
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Photo)*@
+
+                        <img src="~/Content/PassportSizePhoto/@item.Photo" height="60" width="60" />
+                        <a href="~/Content/PassportSizePhoto/@item.Photo" download style="color:red; font-weight:bold"><u>Download</u></a>
+                    </td>
+
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Resume)*@
+
+                        <img src="~/Content/Resume/@item.Resume" height="60" width="60" />
+                        <a href="~/Content/PassportSizePhoto/@item.Resume" download style="color:red; font-weight:bold"><u>Download</u></a>
+
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
+                    </td>
+                </tr>
+            </tbody>
+
+        }
+
+    </table>
+
+    @*<div class="container-fluid">
+            <div class="row">
+
+                <div class="col-sm-2"  id="nodata">
+
+                    @Html.Raw(ViewBag.msg)
+
+                </div>
+
+            </div>
+        </div>*@
+
+    @*<div class="container-fluid">
+            <div class="row">
+
+                <div class="col-sm-2"  id="nodata">
+
+                    @Html.Raw(ViewBag.msg)
+
+                </div>
+
+            </div>
+        </div>*@
+
+
+<div class="container-fluid" style="height:300px; width:300px"></div>
+     
+    <script>
+
+        $(document).ready(function () {
+
+            $("#Mytable").dataTable();
+        });
+    </script>
+
+</body>
+</html>
